@@ -2,12 +2,14 @@ package ru.practicum.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import ru.practicum.RequestOutputDto;
 import ru.practicum.model.Request;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
 public interface RequestRepository extends JpaRepository<Request, Integer> {
 
     @Query(value = "SELECT new ru.practicum.RequestOutputDto(a.name, r.uri, COUNT(r.ip)) " +

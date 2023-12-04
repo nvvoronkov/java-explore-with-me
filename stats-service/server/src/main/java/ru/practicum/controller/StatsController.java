@@ -21,7 +21,6 @@ import java.util.List;
 public class StatsController {
 
     private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
     private final StatsServiceImpl statsService;
 
     @PostMapping("/hit")
@@ -35,7 +34,6 @@ public class StatsController {
                                                            @RequestParam String end,
                                                            @RequestParam(required = false) List<String> uris,
                                                            @RequestParam(defaultValue = "false") Boolean unique) {
-
         LocalDateTime startDT;
         LocalDateTime endDT;
         try {

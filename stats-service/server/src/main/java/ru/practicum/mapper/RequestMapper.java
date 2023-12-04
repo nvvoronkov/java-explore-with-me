@@ -11,10 +11,9 @@ import ru.practicum.model.Request;
 public interface RequestMapper {
     RequestMapper INSTANCE = Mappers.getMapper(RequestMapper.class);
 
-    @Mapping(source = "app.name", target = "app")
-
+    @Mapping(target = "app", source = "app.name")
     RequestDto toRequestDto(Request request);
 
-    @Mapping(source = "app", target = "app.name")
+    @Mapping(target = "app.name", source = "app")
     Request toRequest(RequestDto requestDto);
 }
