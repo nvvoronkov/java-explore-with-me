@@ -22,7 +22,7 @@ public class StatsClient {
                                                            List<String> uris,
                                                            Boolean unique) {
 
-        return webClient.get()
+        ResponseEntity<List<RequestOutputDto>> listResponseEntity = webClient.get()
                 .uri(uriBuilder -> {
                     uriBuilder.path("/stats")
                             .queryParam("start", start)
@@ -36,15 +36,16 @@ public class StatsClient {
                 .retrieve()
                 .toEntityList(RequestOutputDto.class)
                 .block();
+        return listResponseEntity;
     }
 
     public ResponseEntity<List<RequestOutputDto>> getStatsByIp(String start,
-                                                               String end,
-                                                               List<String> uris,
-                                                               Boolean unique,
-                                                               String ip) {
+                                                           String end,
+                                                           List<String> uris,
+                                                           Boolean unique,
+                                                           String ip) {
 
-        return webClient.get()
+        ResponseEntity<List<RequestOutputDto>> listResponseEntity = webClient.get()
                 .uri(uriBuilder -> {
                     uriBuilder.path("/statsByIp")
                             .queryParam("start", start)
@@ -59,5 +60,6 @@ public class StatsClient {
                 .retrieve()
                 .toEntityList(RequestOutputDto.class)
                 .block();
+        return listResponseEntity;
     }
 }
