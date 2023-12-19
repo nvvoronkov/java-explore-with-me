@@ -91,11 +91,11 @@ public class UserController {
 
     @PatchMapping("/events/{eventId}/requests")
     public EventRequestStatusUpdateResult updateUserEventRequests(@PathVariable Long userId,
-                                                           @PathVariable Long eventId,
-                                                           @RequestBody EventRequestStatusUpdateRequest requestsUpdate) {
+                                                                  @PathVariable Long eventId,
+                                                                  @RequestBody EventRequestStatusUpdateRequest requestsUpdate) {
 
         log.info("Calling PATCH: /users/{userId}/events/{eventId}/requests with 'userId': {}, " +
-                "'eventId': {}, 'requestsUpdate': {}", userId, eventId, requestsUpdate);
+                 "'eventId': {}, 'requestsUpdate': {}", userId, eventId, requestsUpdate);
         return requestService.updateEventRequests(userId, eventId, requestsUpdate);
     }
 }
