@@ -40,9 +40,13 @@ public class RequestServiceImpl implements RequestService {
                     + " eventId = " + eventId + " already exists.");
         }
 
-        User requester = userRepository.findById(userId).orElseThrow(() -> new ObjectNotFoundException("User with id = " + userId + " was not found."));
+        User requester = userRepository.findById(userId).orElseThrow(() -> {
+            throw new ObjectNotFoundException("User with id = " + userId + " was not found.");
+        });
 
-        Event event = eventRepository.findById(eventId).orElseThrow(() -> new ObjectNotFoundException("Event with id = " + eventId + " doesn't exist."));
+        Event event = eventRepository.findById(eventId).orElseThrow(() -> {
+            throw new ObjectNotFoundException("Event with id = " + eventId + " doesn't exist.");
+                });
 
         if (!event.getState().equals(EventState.PUBLISHED)) {
             throw new RequestConflictException("Users are not allowed to register for unpublished events.");
@@ -134,7 +138,7 @@ public class RequestServiceImpl implements RequestService {
         List<ParticipationRequest> participationRequests = requestRepository.findAllByIdInAndAndEventId(requestsUpdate.getRequestIds(), eventId);
 
         if (participationRequests.size() != requestsUpdate.getRequestIds().size()) {
-            throw new ObjectNotFoundException("Incorrect request id(s) received in the request body.");
+            throw new ObjectNotFoundException("Incorrect request id(s) in the request body.");
         }
 
         for (ParticipationRequest request : participationRequests) {
