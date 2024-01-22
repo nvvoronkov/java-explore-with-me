@@ -43,13 +43,11 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CommentDto addUserComment(Long userId, Long eventId, NewCommentDto newCommentDto) {
-        User commenter = userRepository.findById(userId).orElseThrow(() -> {
-            throw new ObjectNotFoundException("User with id = " + userId + " was not found.");
-        });
+        User commenter = userRepository.findById(userId).orElseThrow(() ->
+                new ObjectNotFoundException("User with id = " + userId + " was not found."));
 
-        Event event = eventRepository.findById(eventId).orElseThrow(() -> {
-            throw new ObjectNotFoundException("Event with id = " + eventId + " doesn't exist.");
-        });
+        Event event = eventRepository.findById(eventId).orElseThrow(() ->
+                new ObjectNotFoundException("Event with id = " + eventId + " doesn't exist."));
 
         if (!event.getState().equals(EventState.PUBLISHED)) {
             throw new RequestConflictException("Users are not allowed to comment on unpublished events.");
@@ -68,10 +66,9 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CommentDto updateUserComment(Long userId, Long eventId, Long commentId, NewCommentDto newCommentDto) {
-        Comment comment = commentRepository.findByIdAndUserIdAndEventId(commentId, userId, eventId).orElseThrow(() -> {
-            throw new ObjectNotFoundException("Comment with id = " + commentId + " by user id = " + userId +
-                    " for event id = " + eventId + " doesn't exist.");
-        });
+        Comment comment = commentRepository.findByIdAndUserIdAndEventId(commentId, userId, eventId).orElseThrow(() ->
+                new ObjectNotFoundException("Comment with id = " + commentId + " by user id = " + userId +
+                                            " for event id = " + eventId + " doesn't exist."));
 
         if (comment.getStatus().equals(CommentStatus.PENDING)) {
             throw new RequestConflictException("Users are not allowed to update comments, which are pending moderation.");
@@ -88,10 +85,9 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CommentDto getUserEventComment(Long userId, Long eventId, Long commentId) {
-        Comment comment = commentRepository.findByIdAndUserIdAndEventId(commentId, userId, eventId).orElseThrow(() -> {
-            throw new ObjectNotFoundException("Comment with id = " + commentId + " by user id = " + userId +
-                    " for event id = " + eventId + " doesn't exist.");
-        });
+        Comment comment = commentRepository.findByIdAndUserIdAndEventId(commentId, userId, eventId).orElseThrow(() ->
+                new ObjectNotFoundException("Comment with id = " + commentId + " by user id = " + userId +
+                                            " for event id = " + eventId + " doesn't exist."));
 
         if (comment.getStatus().equals(CommentStatus.PENDING)) {
             throw new RequestConflictException("Users are not allowed to review comments, which are pending moderation.");
