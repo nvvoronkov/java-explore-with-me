@@ -95,7 +95,7 @@ public class UserController {
                                                                   @RequestBody EventRequestStatusUpdateRequest requestsUpdate) {
 
         log.info("Calling PATCH: /users/{userId}/events/{eventId}/requests with 'userId': {}, " +
-                 "'eventId': {}, 'requestsUpdate': {}", userId, eventId, requestsUpdate);
+                "'eventId': {}, 'requestsUpdate': {}", userId, eventId, requestsUpdate);
         return requestService.updateEventRequests(userId, eventId, requestsUpdate);
     }
 }

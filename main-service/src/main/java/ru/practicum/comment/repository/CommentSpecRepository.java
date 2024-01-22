@@ -26,7 +26,7 @@ public interface CommentSpecRepository extends JpaRepository<Comment, Long>, Jpa
 
     static Specification<Comment> hasEvents(List<Long> events) {
         return (event, query, critBuilder) -> {
-            if (events == null || events.size() == 0) {
+            if (events == null || events.isEmpty()) {
                 return critBuilder.isTrue(critBuilder.literal(true));
             } else {
                 CriteriaBuilder.In<Long> eventIds = critBuilder.in(event.get("event"));
@@ -40,7 +40,7 @@ public interface CommentSpecRepository extends JpaRepository<Comment, Long>, Jpa
 
     static Specification<Comment> hasUsers(List<Long> users) {
         return (event, query, critBuilder) -> {
-            if (users == null || users.size() == 0) {
+            if (users == null || users.isEmpty()) {
                 return critBuilder.isTrue(critBuilder.literal(true));
             } else {
                 CriteriaBuilder.In<Long> userIds = critBuilder.in(event.get("commenter"));
@@ -54,7 +54,7 @@ public interface CommentSpecRepository extends JpaRepository<Comment, Long>, Jpa
 
     static Specification<Comment> hasStatuses(List<CommentStatus> statuses) {
         return (event, query, critBuilder) -> {
-            if (statuses == null || statuses.size() == 0) {
+            if (statuses == null || statuses.isEmpty()) {
                 return critBuilder.isTrue(critBuilder.literal(true));
             } else {
                 CriteriaBuilder.In<CommentStatus> commentStatuses = critBuilder.in(event.get("status"));
