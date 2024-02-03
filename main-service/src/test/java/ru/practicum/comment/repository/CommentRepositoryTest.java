@@ -1,11 +1,12 @@
 package ru.practicum.comment.repository;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import practicum.comment.repository.CommentRepository;
 import ru.practicum.category.model.Category;
 import ru.practicum.category.repository.CategoryRepository;
 import ru.practicum.comment.model.Comment;
@@ -137,7 +138,7 @@ public class CommentRepositoryTest {
         assertNotNull(commentOptional);
         assertEquals(CommentStatus.PENDING, commentOptional.get().getStatus());
 
-        Boolean commentExists = commentRepository.existsByIdAndUserIdAndEventIdAndStatus(comment.getId(), user.getId(), event.getId(), CommentStatus.PENDING);
+        boolean commentExists = commentRepository.existsByIdAndUserIdAndEventIdAndStatus(comment.getId(), user.getId(), event.getId(), CommentStatus.PENDING);
 
         assertTrue(commentExists);
     }

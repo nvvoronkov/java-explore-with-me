@@ -1,11 +1,11 @@
 package ru.practicum.category.mapper;
 
 import org.junit.jupiter.api.Test;
+import practicum.category.mapper.CategoryMapper;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.category.dto.NewCategoryDto;
 import ru.practicum.category.model.Category;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CategoryMapperTest {
