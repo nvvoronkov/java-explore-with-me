@@ -10,12 +10,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.practicum.category.dto.CategoryDto;
-import ru.practicum.category.dto.NewCategoryDto;
-import ru.practicum.category.service.CategoryService;
+import practicum.category.controller.AdminCategoryController;
+import practicum.category.dto.CategoryDto;
+import practicum.category.dto.NewCategoryDto;
+import practicum.category.service.CategoryService;
 
 import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

@@ -1,6 +1,7 @@
 package ru.practicum.comment.mapper;
 
 import org.junit.jupiter.api.Test;
+import practicum.comment.mapper.CommentMapper;
 import ru.practicum.category.model.Category;
 import ru.practicum.comment.dto.CommentDto;
 import ru.practicum.comment.dto.NewCommentDto;
@@ -14,7 +15,6 @@ import ru.practicum.user.model.User;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CommentMapperTest {

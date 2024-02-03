@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.json.JsonContent;
+import practicum.comment.dto.CommentDto;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.user.dto.UserShortDto;
