@@ -40,5 +40,4 @@ public class WebControllerLogger {
 
         log.info("Current user roles: " + roles);
     }
-
 }
